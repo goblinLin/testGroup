@@ -5,7 +5,12 @@
 -- Author: Zack Lin
 -- Time:2015/8/18
 -----------------------------------------------------------------------------------------
-
+--[[  Group練習
+	1.建立一個新Group1
+	2.將一張圖片放進Group中，並調整Group的位置
+	3.修改Group1的位置與anchor
+	4.建立一個新的Group2，將Group1放進Group2當中
+]]
 --=======================================================================================
 --引入各種函式庫
 --=======================================================================================
@@ -45,6 +50,10 @@ end
 --初始化函式，一般用於建立元件，設定初始值，部署元件等工作...
 initial = function (group)
 	print('initial')
+	--Group同樣可以設錨點，但需要使用anchorChildren來觸發
+	group.anchorX = 0
+	group.anchorY = 0
+	group.anchorChildren = true
 	for i=1,numOfBtn do
 		local btn = widget.newButton{
 			width = 120,
