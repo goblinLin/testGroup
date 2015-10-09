@@ -5,6 +5,7 @@
 
 settings =
 {
+	corona_sdk_simulator_path = "/Applications/CoronaSDK-2693/Corona Simulator.app/Contents/MacOS/Corona Simulator",
 	
 	orientation =
 	{
