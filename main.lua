@@ -14,8 +14,8 @@ local widget = require ("widget")
 --=======================================================================================
 --宣告各種變數
 local numOfBtn = 5
-local startOfX = 40
-local startOfY = 40
+local startOfX = 0
+local startOfY = 10
 local distanceBetweenBtns = 70
 local btns
 
@@ -34,6 +34,7 @@ _SCREEN.CENTER = {
 --宣告與定義main()函式
 --=======================================================================================
 local main = function (  )
+	--生成一個新的子Group
 	btns = display.newGroup( )
 	initial(btns)
 end
@@ -42,6 +43,9 @@ end
 --定義其他函式
 --=======================================================================================
 initial = function (group)
+	group.x = startOfX
+	group.y = startOfY
+
 	for i=1,numOfBtn do
 		local btn = widget.newButton{
 			width = 120,
@@ -53,13 +57,20 @@ initial = function (group)
 		btn.anchorY = 0
 		btn.x = 0
 		btn.y = (i - 1) * distanceBetweenBtns
+
+		--將生成的按鈕放進group群組當中
 		group:insert( btn )
+
+		--取得群組的子元件的全域座標
+		local actual_x , actual_y = btn:localToContent( 0, 0 )
+		print( 'actual_x:' .. actual_x ..",actual_y:" .. actual_y )
 	end
-	group.x = startOfX
-	group.y = startOfY
+
+	local image = display.newImageRect( group, "images/GameCenter.png", 80, 80)
+	image.x = _SCREEN.WIDTH - 130
+	image.y = 20
 end
 --=======================================================================================
 --呼叫主函式
 --=======================================================================================
 main()
--- Your code here
