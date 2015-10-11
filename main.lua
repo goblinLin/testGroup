@@ -62,7 +62,6 @@ initial = function (group)
 	group.x = startOfX
 	group.y = startOfY
 
-	print('initial')
 	--Group同樣可以設錨點，但需要使用anchorChildren來觸發
 	group.anchorX = 0
 	group.anchorY = 0
@@ -87,9 +86,10 @@ initial = function (group)
 		print( 'actual_x:' .. actual_x ..",actual_y:" .. actual_y )
 	end
 
-	local image = display.newImageRect( group, "images/GameCenter.png", 80, 80)
-	image.x = _SCREEN.WIDTH - 130
-	image.y = 20
+	--逐一取出群組裡的子元件，先進先出
+	for i=1,group.numChildren do
+		print('btn y:' .. group[i].y)
+	end
 end
 --=======================================================================================
 --呼叫主函式
